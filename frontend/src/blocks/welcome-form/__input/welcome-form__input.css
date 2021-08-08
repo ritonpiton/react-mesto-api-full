@@ -1,0 +1,17 @@
+.welcome-form__input {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    background-color: black;
+    color: #CCCCCC;
+    border: none;
+    border-bottom: 2px solid rgba(204, 204, 204, 1);
+    margin-top: 0;
+    padding-bottom: 13px;
+    box-sizing: border-box;
+    margin-bottom: 30px;
+}
+
+.welcome-form__input::placeholder{
+    color: #CCCCCC;
+}

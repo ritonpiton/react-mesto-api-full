@@ -1,0 +1,7 @@
+.place__like-container {
+    grid-area: like;
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    margin: auto 20px auto 0;
+}

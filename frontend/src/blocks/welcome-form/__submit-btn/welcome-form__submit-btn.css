@@ -1,0 +1,18 @@
+.welcome-form__submit-btn {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #000000;
+    background-color: #FFFFFF;
+    margin-top: 216px;
+
+    padding: 14px 84px;
+    border: none;
+    border-radius: 2px;
+}
+
+.form__submit-btn:hover{
+    cursor: pointer;
+    opacity: 0.8;
+}
