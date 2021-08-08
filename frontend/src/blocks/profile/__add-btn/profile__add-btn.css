@@ -1,0 +1,28 @@
+.profile__add-btn{
+    display: flex;
+    margin: 0 auto;
+    min-width: 282px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    font-size: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__add-btn:hover{
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media all and (min-width: 900px){
+    .profile__add-btn{
+        min-width: 150px;
+        font-size: 44px;
+        justify-self: right;
+    }
+}

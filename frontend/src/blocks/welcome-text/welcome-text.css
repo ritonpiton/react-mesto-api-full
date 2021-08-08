@@ -1,0 +1,9 @@
+.welcome-text {
+    color: white;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    max-width: 358px;
+    margin: 60px auto 50px auto;
+    text-align: center;
+}

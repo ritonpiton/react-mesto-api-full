@@ -1,0 +1,16 @@
+.profile__avatar{
+    object-fit: cover;
+    display: flex;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+}
+
+@media all and (min-width: 900px){
+    .profile__avatar{
+        margin: 0 30px 0 0;
+        justify-self: start;
+    }
+}
+

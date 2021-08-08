@@ -1,0 +1,22 @@
+.profile__cover{
+    width: 100%;
+    margin: 26px 36px 36px auto;
+
+    display: grid;
+    grid-template-areas: 
+    "name edit-btn"
+    "description description";
+    grid-template-columns: repeat(2, minmax(min-content, max-content));
+    gap: 14px 10px;
+    
+    justify-content: center; /* выр-е всей сетки */
+}
+
+@media all and (min-width: 900px){
+    .profile__cover{
+        grid-template-rows: repeat(2, minmax(min-content, max-content));
+        gap: 16px 18px;
+        justify-content: start;
+        margin-left: 0;
+    }
+}
