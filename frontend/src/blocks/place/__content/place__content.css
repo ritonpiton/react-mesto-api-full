@@ -1,6 +1,0 @@
-.place__content{
-    background-color: white;
-    display: grid;
-    grid-template-areas: 
-    "title like";
-}
