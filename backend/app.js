@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
-const cors = require('cors');
 
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -25,12 +24,12 @@ app.disable('x-powered-by');
 
 /* ---------- Helmet ---------- */
 
-/* // Массив доменов, с которых разрешены кросс-доменные запросы
+// Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'http://mesto.website.nomoredomains.rocks',
-  'https://mesto.website.nomoredomains.rocks',
-  'http://localhost:3000',
-  'https://localhost:3000',
+  'http://mesto.frontend.domain.nomoredomains.rocks',
+  'https://mesto.frontend.domain.nomoredomains.rocks',
+  'http://localhost:3001',
+  'https://localhost:3001',
 ];
 
 app.use((req, res, next) => {
@@ -48,14 +47,12 @@ app.use((req, res, next) => {
 
     return res.status(200).send();
   }
-
   return next();
-}); */
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser()); // подключаем парсер кук как мидлвэр
-app.use(cors());
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
