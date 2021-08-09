@@ -10,6 +10,8 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { login, createUser } = require('./controllers/users');
 const NotFoundError = require('./errors/NotFoundError');
+const errorHandler = require('./middlewares/errorHandler');
+const corsHandler = require('./middlewares/corsHandler');
 
 const { PORT = 3001 } = process.env;
 const app = express();
@@ -24,31 +26,7 @@ app.disable('x-powered-by');
 
 /* ---------- Helmet ---------- */
 
-// Массив доменов, с которых разрешены кросс-доменные запросы
-const allowedCors = [
-  'http://mesto.frontend.domain.nomoredomains.rocks',
-  'https://mesto.frontend.domain.nomoredomains.rocks',
-  'http://localhost:3001',
-  'https://localhost:3001',
-];
-
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-  const { method } = req;
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  const requestHeaders = req.headers['access-control-request-headers'];
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-  }
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
-    res.header('Access-Control-Allow-Headers', requestHeaders);
-
-    return res.status(200).send();
-  }
-  return next();
-});
+app.use(corsHandler);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -96,13 +74,7 @@ app.use(errorLogger); // подключаем логгер ошибок
 
 // здесь обрабатываем все ошибки
 app.use(errors()); // обработчик ошибок celebrate
-// централизованный обработчик
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-  res
-    .status(statusCode)
-    .send({ message: statusCode === 500 ? 'На сервере произошла ошибка' : message });
-});
+app.use(errorHandler); // централизованный обработчик
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
