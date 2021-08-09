@@ -25,7 +25,7 @@ app.disable('x-powered-by');
 
 /* ---------- Helmet ---------- */
 
-// Массив доменов, с которых разрешены кросс-доменные запросы
+/* // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
   'http://mesto.website.nomoredomains.rocks',
   'https://mesto.website.nomoredomains.rocks',
@@ -50,7 +50,7 @@ app.use((req, res, next) => {
   }
 
   return next();
-});
+}); */
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
