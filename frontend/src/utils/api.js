@@ -98,10 +98,10 @@ class Api {
     }
 }
 
-//const BASE_URL = `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`
+// const BASE_URL = `${window.location.protocol}${process.env.REACT_APP_API_URL || '//localhost:3001'}`
 const BASE_URL = '//api.mesto.frontend.domain.nomoredomains.rocks';
 export const api = new Api({
-  url: BASE_URL,
+    url: BASE_URL,
 });
 
 export default api;

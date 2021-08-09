@@ -56,7 +56,7 @@ function App() {
         setIsEditProfilePopupOpen(true)
     }
     function handleAddPlaceClick() {
-       setIsAddPlacePopupOpen(true);
+        setIsAddPlacePopupOpen(true);
     }
     function handleCardClick(card) {
         setSelectedCard(card);
@@ -162,27 +162,27 @@ function App() {
     }
 
     return (
-            <CurrentUserContext.Provider value={currentUser}>
-                <div className="page">
-                    <Header email={userEmail} signOut={signOut}/>
-                    <Switch>
-                        <ProtectedRoute exact path='/' loggedIn={loggedIn} component={Main} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} cards={cards} onCardClick={handleCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
-                        <Route path='/signup'>
-                            <Register handleRegister={handleRegister} />
-                        </Route>
-                        <Route path='/signin'>
-                            <Login handleLogin={handleLogin}/>
-                        </Route>
-                    </Switch>
-                    <Footer />
-                    <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
-                    <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-                    <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddCard={handleAddPlaceSubmit} />
-                    <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
-                    <InfoToolTip isOpen={isInfoToolTipOpen} onClose={closeAllPopups} isRegistered={isRegistered}/>
-                </div>
-            </CurrentUserContext.Provider>
-  );
+        <CurrentUserContext.Provider value={currentUser}>
+            <div className="page">
+                <Header email={userEmail} signOut={signOut}/>
+                <Switch>
+                    <ProtectedRoute exact path='/' loggedIn={loggedIn} component={Main} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} cards={cards} onCardClick={handleCardClick} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+                    <Route path='/signup'>
+                        <Register handleRegister={handleRegister} />
+                    </Route>
+                    <Route path='/signin'>
+                        <Login handleLogin={handleLogin}/>
+                    </Route>
+                </Switch>
+                <Footer />
+                <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
+                <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+                <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddCard={handleAddPlaceSubmit} />
+                <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
+                <InfoToolTip isOpen={isInfoToolTipOpen} onClose={closeAllPopups} isRegistered={isRegistered}/>
+            </div>
+        </CurrentUserContext.Provider>
+    );
 }
 
 export default withRouter(App);

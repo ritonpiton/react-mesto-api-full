@@ -5,13 +5,14 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { errors, celebrate, Joi } = require('celebrate');
+const cors = require('cors');
 
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { login, createUser } = require('./controllers/users');
 const NotFoundError = require('./errors/NotFoundError');
 const errorHandler = require('./middlewares/errorHandler');
-const corsHandler = require('./middlewares/corsHandler');
+// const corsHandler = require('./middlewares/corsHandler');
 
 const { PORT = 3001 } = process.env;
 const app = express();
@@ -26,11 +27,13 @@ app.disable('x-powered-by');
 
 /* ---------- Helmet ---------- */
 
-app.use(corsHandler);
+
+// app.use(corsHandler);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser()); // подключаем парсер кук как мидлвэр
+app.use(cors({ origin: true }));
 
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb', {
